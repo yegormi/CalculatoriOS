@@ -8,17 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		EEA6E9CE2A9CC7DB00A2F6DD /* CalculatorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6E9CD2A9CC7DB00A2F6DD /* CalculatorApp.swift */; };
-		EEA6E9D02A9CC7DB00A2F6DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6E9CF2A9CC7DB00A2F6DD /* ContentView.swift */; };
 		EEA6E9D22A9CC7DE00A2F6DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEA6E9D12A9CC7DE00A2F6DD /* Assets.xcassets */; };
 		EEA6E9D52A9CC7DE00A2F6DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EEA6E9D42A9CC7DE00A2F6DD /* Preview Assets.xcassets */; };
+		EEA6E9E52A9CC86000A2F6DD /* ArithmeticOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6E9DC2A9CC85F00A2F6DD /* ArithmeticOperation.swift */; };
+		EEA6E9E62A9CC86000A2F6DD /* ButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6E9DD2A9CC85F00A2F6DD /* ButtonType.swift */; };
+		EEA6E9E72A9CC86000A2F6DD /* Digit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6E9DE2A9CC85F00A2F6DD /* Digit.swift */; };
+		EEA6E9E82A9CC86000A2F6DD /* CalculatorButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6E9E02A9CC86000A2F6DD /* CalculatorButtonStyle.swift */; };
+		EEA6E9E92A9CC86000A2F6DD /* CalculatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6E9E32A9CC86000A2F6DD /* CalculatorButton.swift */; };
+		EEA6E9EA2A9CC86000A2F6DD /* CalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6E9E42A9CC86000A2F6DD /* CalculatorView.swift */; };
+		EEA6E9EC2A9CCE7600A2F6DD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6E9EB2A9CCE7600A2F6DD /* Constants.swift */; };
+		EEA6E9EE2A9CD75700A2F6DD /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6E9ED2A9CD75700A2F6DD /* Calculator.swift */; };
+		EEA6E9F02A9CDE9000A2F6DD /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6E9EF2A9CDE9000A2F6DD /* CalculatorViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		EEA6E9CA2A9CC7DB00A2F6DD /* Calculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEA6E9CD2A9CC7DB00A2F6DD /* CalculatorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorApp.swift; sourceTree = "<group>"; };
-		EEA6E9CF2A9CC7DB00A2F6DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EEA6E9D12A9CC7DE00A2F6DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EEA6E9D42A9CC7DE00A2F6DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EEA6E9DC2A9CC85F00A2F6DD /* ArithmeticOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArithmeticOperation.swift; sourceTree = "<group>"; };
+		EEA6E9DD2A9CC85F00A2F6DD /* ButtonType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonType.swift; sourceTree = "<group>"; };
+		EEA6E9DE2A9CC85F00A2F6DD /* Digit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Digit.swift; sourceTree = "<group>"; };
+		EEA6E9E02A9CC86000A2F6DD /* CalculatorButtonStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorButtonStyle.swift; sourceTree = "<group>"; };
+		EEA6E9E32A9CC86000A2F6DD /* CalculatorButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorButton.swift; sourceTree = "<group>"; };
+		EEA6E9E42A9CC86000A2F6DD /* CalculatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorView.swift; sourceTree = "<group>"; };
+		EEA6E9EB2A9CCE7600A2F6DD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EEA6E9ED2A9CD75700A2F6DD /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		EEA6E9EF2A9CDE9000A2F6DD /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,9 +68,12 @@
 			isa = PBXGroup;
 			children = (
 				EEA6E9CD2A9CC7DB00A2F6DD /* CalculatorApp.swift */,
-				EEA6E9CF2A9CC7DB00A2F6DD /* ContentView.swift */,
-				EEA6E9D12A9CC7DE00A2F6DD /* Assets.xcassets */,
+				EEA6E9EB2A9CCE7600A2F6DD /* Constants.swift */,
+				EEA6E9DB2A9CC85F00A2F6DD /* Models */,
+				EEA6E9DF2A9CC86000A2F6DD /* Styles */,
+				EEA6E9E12A9CC86000A2F6DD /* Views */,
 				EEA6E9D32A9CC7DE00A2F6DD /* Preview Content */,
+				EEA6E9D12A9CC7DE00A2F6DD /* Assets.xcassets */,
 			);
 			path = Calculator;
 			sourceTree = "<group>";
@@ -65,6 +84,43 @@
 				EEA6E9D42A9CC7DE00A2F6DD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EEA6E9DB2A9CC85F00A2F6DD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EEA6E9ED2A9CD75700A2F6DD /* Calculator.swift */,
+				EEA6E9DC2A9CC85F00A2F6DD /* ArithmeticOperation.swift */,
+				EEA6E9DD2A9CC85F00A2F6DD /* ButtonType.swift */,
+				EEA6E9DE2A9CC85F00A2F6DD /* Digit.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EEA6E9DF2A9CC86000A2F6DD /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				EEA6E9E02A9CC86000A2F6DD /* CalculatorButtonStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		EEA6E9E12A9CC86000A2F6DD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EEA6E9E22A9CC86000A2F6DD /* Components */,
+				EEA6E9E42A9CC86000A2F6DD /* CalculatorView.swift */,
+				EEA6E9EF2A9CDE9000A2F6DD /* CalculatorViewModel.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EEA6E9E22A9CC86000A2F6DD /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EEA6E9E32A9CC86000A2F6DD /* CalculatorButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +193,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEA6E9D02A9CC7DB00A2F6DD /* ContentView.swift in Sources */,
 				EEA6E9CE2A9CC7DB00A2F6DD /* CalculatorApp.swift in Sources */,
+				EEA6E9EA2A9CC86000A2F6DD /* CalculatorView.swift in Sources */,
+				EEA6E9E92A9CC86000A2F6DD /* CalculatorButton.swift in Sources */,
+				EEA6E9E62A9CC86000A2F6DD /* ButtonType.swift in Sources */,
+				EEA6E9F02A9CDE9000A2F6DD /* CalculatorViewModel.swift in Sources */,
+				EEA6E9E52A9CC86000A2F6DD /* ArithmeticOperation.swift in Sources */,
+				EEA6E9EE2A9CD75700A2F6DD /* Calculator.swift in Sources */,
+				EEA6E9E82A9CC86000A2F6DD /* CalculatorButtonStyle.swift in Sources */,
+				EEA6E9E72A9CC86000A2F6DD /* Digit.swift in Sources */,
+				EEA6E9EC2A9CCE7600A2F6DD /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +339,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,6 +369,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
