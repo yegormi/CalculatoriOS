@@ -16,7 +16,7 @@ struct SettingsView: View {
                 Section(header: Text("Accent Color")) {
                     circlesScrollablePicker
                         .padding(5)
-                    Text("Stored Color: \(viewModel.storedSelectedColor.description)")
+//                    Text("Stored Color: \(viewModel.storedSelectedColor.description)")
                     darkMode
                         .padding(5)
                 }
@@ -43,7 +43,9 @@ extension SettingsView {
                 ForEach(ColorPicker.allCases, id: \.self) { colorOption in
                     ColorCircle(colorSelected: colorOption, isSelected: colorOption.color == viewModel.selectedColor.color)
                         .onTapGesture {
-                            viewModel.setSelectedColor(to: colorOption)
+                            withAnimation() {
+                                viewModel.setSelectedColor(to: colorOption)
+                            }
                             viewModel.saveSelectedColor()
                         }
                     
