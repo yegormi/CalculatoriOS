@@ -78,7 +78,7 @@ struct Calculator {
         } else if canAddDigit(digit) {
             let numberString = getNumberString(forNumber: newNumber)
             if numberString.count >= 9 {
-                return // Limit reached, do not add more digits
+                return
             }
             newNumber = Decimal(string: numberString.appending("\(digit.rawValue)"))
         }
