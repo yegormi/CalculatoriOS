@@ -13,10 +13,11 @@ struct CalculatorButtonStyle: ButtonStyle {
     var backgroundColor: Color
     var foregroundColor: Color
     var isWide: Bool = false
+
     
     func makeBody(configuration: Configuration) -> some View {
             configuration.label
-                .font(.system(size: 32, weight: .medium))
+            .font(.system(size: 35, weight: .regular))
                 .frame(width: size, height: size)
                 .frame(maxWidth: isWide ? .infinity : size, alignment: .leading)
                 .background(backgroundColor)
@@ -31,7 +32,7 @@ struct CalculatorButtonStyle: ButtonStyle {
 }
 
 struct CalculatorButtonStyle_Previews: PreviewProvider {
-    static let buttonType: ButtonType = .digit(.one)
+    static let buttonType: ButtonType = .operation(ArithmeticOperation.multiplication)
     
     static var previews: some View {
         Button(buttonType.description) { }

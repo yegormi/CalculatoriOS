@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Foundation
 
 enum ButtonType: Hashable, CustomStringConvertible {
     case digit(_ digit: Digit)
@@ -44,7 +43,7 @@ enum ButtonType: Hashable, CustomStringConvertible {
         case .allClear, .clear, .negative, .percent:
             return Color(.lightGray)
         case .operation, .equals:
-            return .mint
+            return SettingsView.ViewModel().selectedColor.color
         case .digit, .decimal:
             return .secondary
         }

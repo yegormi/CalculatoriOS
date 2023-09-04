@@ -19,6 +19,10 @@
 		EEA6E9EC2A9CCE7600A2F6DD /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6E9EB2A9CCE7600A2F6DD /* Constants.swift */; };
 		EEA6E9EE2A9CD75700A2F6DD /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6E9ED2A9CD75700A2F6DD /* Calculator.swift */; };
 		EEA6E9F02A9CDE9000A2F6DD /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6E9EF2A9CDE9000A2F6DD /* CalculatorViewModel.swift */; };
+		EEB8E8CC2AA3D3DA00E69811 /* ColorCircleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8E8C72AA3D3D900E69811 /* ColorCircleStyle.swift */; };
+		EEB8E8CE2AA3D3DA00E69811 /* ColorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8E8C92AA3D3D900E69811 /* ColorData.swift */; };
+		EEB8E8D22AA3D59000E69811 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8E8D12AA3D59000E69811 /* SettingsView.swift */; };
+		EEB8E8D42AA3D59C00E69811 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8E8D32AA3D59C00E69811 /* SettingsViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,11 @@
 		EEA6E9EB2A9CCE7600A2F6DD /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EEA6E9ED2A9CD75700A2F6DD /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		EEA6E9EF2A9CDE9000A2F6DD /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
+		EEB8E8C72AA3D3D900E69811 /* ColorCircleStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCircleStyle.swift; sourceTree = "<group>"; };
+		EEB8E8C92AA3D3D900E69811 /* ColorData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorData.swift; sourceTree = "<group>"; };
+		EEB8E8D12AA3D59000E69811 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		EEB8E8D32AA3D59C00E69811 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		EEB8E8F12AA4B79900E69811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,11 +76,13 @@
 		EEA6E9CC2A9CC7DB00A2F6DD /* Calculator */ = {
 			isa = PBXGroup;
 			children = (
+				EEB8E8F12AA4B79900E69811 /* Info.plist */,
 				EEA6E9CD2A9CC7DB00A2F6DD /* CalculatorApp.swift */,
 				EEA6E9EB2A9CCE7600A2F6DD /* Constants.swift */,
 				EEA6E9DB2A9CC85F00A2F6DD /* Models */,
 				EEA6E9DF2A9CC86000A2F6DD /* Styles */,
 				EEA6E9E12A9CC86000A2F6DD /* Views */,
+				EEA6EA2B2AA077AD00A2F6DD /* ViewModels */,
 				EEA6E9D32A9CC7DE00A2F6DD /* Preview Content */,
 				EEA6E9D12A9CC7DE00A2F6DD /* Assets.xcassets */,
 			);
@@ -89,9 +100,10 @@
 		EEA6E9DB2A9CC85F00A2F6DD /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EEA6E9ED2A9CD75700A2F6DD /* Calculator.swift */,
 				EEA6E9DC2A9CC85F00A2F6DD /* ArithmeticOperation.swift */,
 				EEA6E9DD2A9CC85F00A2F6DD /* ButtonType.swift */,
+				EEA6E9ED2A9CD75700A2F6DD /* Calculator.swift */,
+				EEB8E8C92AA3D3D900E69811 /* ColorData.swift */,
 				EEA6E9DE2A9CC85F00A2F6DD /* Digit.swift */,
 			);
 			path = Models;
@@ -101,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				EEA6E9E02A9CC86000A2F6DD /* CalculatorButtonStyle.swift */,
+				EEB8E8C72AA3D3D900E69811 /* ColorCircleStyle.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -110,7 +123,7 @@
 			children = (
 				EEA6E9E22A9CC86000A2F6DD /* Components */,
 				EEA6E9E42A9CC86000A2F6DD /* CalculatorView.swift */,
-				EEA6E9EF2A9CDE9000A2F6DD /* CalculatorViewModel.swift */,
+				EEB8E8D12AA3D59000E69811 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -121,6 +134,15 @@
 				EEA6E9E32A9CC86000A2F6DD /* CalculatorButton.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		EEA6EA2B2AA077AD00A2F6DD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				EEA6E9EF2A9CDE9000A2F6DD /* CalculatorViewModel.swift */,
+				EEB8E8D32AA3D59C00E69811 /* SettingsViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,11 +216,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEA6E9CE2A9CC7DB00A2F6DD /* CalculatorApp.swift in Sources */,
+				EEB8E8CE2AA3D3DA00E69811 /* ColorData.swift in Sources */,
 				EEA6E9EA2A9CC86000A2F6DD /* CalculatorView.swift in Sources */,
 				EEA6E9E92A9CC86000A2F6DD /* CalculatorButton.swift in Sources */,
 				EEA6E9E62A9CC86000A2F6DD /* ButtonType.swift in Sources */,
 				EEA6E9F02A9CDE9000A2F6DD /* CalculatorViewModel.swift in Sources */,
 				EEA6E9E52A9CC86000A2F6DD /* ArithmeticOperation.swift in Sources */,
+				EEB8E8D42AA3D59C00E69811 /* SettingsViewModel.swift in Sources */,
+				EEB8E8CC2AA3D3DA00E69811 /* ColorCircleStyle.swift in Sources */,
+				EEB8E8D22AA3D59000E69811 /* SettingsView.swift in Sources */,
 				EEA6E9EE2A9CD75700A2F6DD /* Calculator.swift in Sources */,
 				EEA6E9E82A9CC86000A2F6DD /* CalculatorButtonStyle.swift in Sources */,
 				EEA6E9E72A9CC86000A2F6DD /* Digit.swift in Sources */,
@@ -334,12 +360,14 @@
 				DEVELOPMENT_TEAM = RX5QFP6Q25;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Calculator/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -364,12 +392,14 @@
 				DEVELOPMENT_TEAM = RX5QFP6Q25;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Calculator/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

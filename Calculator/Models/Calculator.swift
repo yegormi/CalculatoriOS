@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 struct Calculator {
     
     private struct ArithmeticExpression: Equatable {
@@ -28,6 +29,7 @@ struct Calculator {
     }
     
     // MARK: - PROPERTIES
+    
     private var newNumber: Decimal? {
         didSet {
             guard newNumber != nil else { return }
@@ -44,8 +46,6 @@ struct Calculator {
     private var carryingDecimal: Bool = false
     private var carryingZeroCount: Int = 0
     private var pressedClear: Bool = false
-
-
 
 
     // MARK: - COMPUTED PROPERTIES
@@ -70,13 +70,16 @@ struct Calculator {
         newNumber == nil && expression == nil && result == nil || pressedClear
     }
     
-    
     // MARK: - OPERATIONS
+    
     mutating func setDigit(_ digit: Digit) {
         if containsDecimal && digit == .zero {
             carryingZeroCount += 1
         } else if canAddDigit(digit) {
             let numberString = getNumberString(forNumber: newNumber)
+            if numberString.count >= 9 {
+                return // Limit reached, do not add more digits
+            }
             newNumber = Decimal(string: numberString.appending("\(digit.rawValue)"))
         }
     }
@@ -161,6 +164,7 @@ struct Calculator {
      }
     
     // MARK: - HELPERS
+    
     private func getNumberString(forNumber number: Decimal?, withCommas: Bool = false) -> String {
         var numberString = (withCommas ? number?.formatted(.number) : number.map(String.init)) ?? "0"
 

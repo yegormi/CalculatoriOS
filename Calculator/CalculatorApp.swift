@@ -13,6 +13,8 @@ struct CalculatorApp: App {
         WindowGroup {
             CalculatorView()
                 .environmentObject(CalculatorView.ViewModel())
+                .environmentObject(SettingsView.ViewModel())
+
         }
     }
 }

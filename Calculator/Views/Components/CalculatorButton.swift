@@ -11,7 +11,7 @@ extension CalculatorView {
     struct CalculatorButton: View {
         
         let buttonType: ButtonType
-        @EnvironmentObject private var viewModel: ViewModel
+        @EnvironmentObject var viewModel: ViewModel
         
         var body: some View {
             Button(buttonType.description) {
