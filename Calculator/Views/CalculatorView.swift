@@ -12,52 +12,48 @@ import SwiftUI
 
 struct CalculatorView: View {
     
-    @EnvironmentObject var viewModel: ViewModel
-    @EnvironmentObject var settingsViewModel: SettingsView.ViewModel
+    @EnvironmentObject private var viewModel: ViewModel
+    @EnvironmentObject private var settingsViewModel: SettingsView.ViewModel
     @State private var isShowingSettings = false
     @State private var isShowingHistory = false
     @State private var isReadyToUpdateView = false
 
 
     var body: some View {
-        NavigationView {
-                VStack {
-                    Spacer()
-                    displayText
-                    buttonPad
-                }
-                .padding(Constants.padding)
-                .background(Color.black)
-                .onChange(of: settingsViewModel.isDarkModeEnabled) { newValue in
-                    if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                       let window = windowScene.windows.first {
-                        UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
-                            window.overrideUserInterfaceStyle = newValue ? .dark : .light
-                        }, completion: nil)
-                    }
-                }
-                .onAppear() {
-                    settingsViewModel.selectedColor = settingsViewModel.storedSelectedColor
-                }
-                .onChange(of: settingsViewModel.selectedColor) { newValue in
-                    settingsViewModel.setSelectedColor(to: newValue)
-                    settingsViewModel.saveSelectedColor()
-                }
-                .onReceive(settingsViewModel.accentColorChanged) { _ in
-                    isReadyToUpdateView = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                        isReadyToUpdateView = false
-                    }
-                }
-                .toolbar() {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        settingsButton.padding(.top)
-                    }
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        historyButton.padding(.top)
-                    }
-                    
-                }
+        VStack {
+            HStack {
+                settingsButton
+                    .padding(Constants.padding)
+                Spacer()
+                historyButton
+                    .padding(Constants.padding)
+            }
+            Spacer()
+            displayText
+            buttonPad
+        }
+        .padding(Constants.padding)
+        .background(Color.black)
+        .onChange(of: settingsViewModel.isDarkModeEnabled) { newValue in
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let window = windowScene.windows.first {
+                UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                    window.overrideUserInterfaceStyle = newValue ? .dark : .light
+                }, completion: nil)
+            }
+        }
+        .onAppear() {
+            settingsViewModel.selectedColor = settingsViewModel.storedSelectedColor
+        }
+        .onChange(of: settingsViewModel.selectedColor) { newValue in
+            settingsViewModel.setSelectedColor(to: newValue)
+            settingsViewModel.saveSelectedColor()
+        }
+        .onReceive(settingsViewModel.accentColorChanged) { _ in
+            isReadyToUpdateView = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                isReadyToUpdateView = false
+            }
         }
     }
 }
@@ -85,7 +81,7 @@ extension CalculatorView {
             .frame(maxWidth: .infinity, alignment: .trailing)
             .font(.system(size: 88, weight: .light))
             .lineLimit(1)
-            .minimumScaleFactor(0.5)
+            .minimumScaleFactor(0.3)
     }
     
     private var buttonPad: some View {
