@@ -38,6 +38,7 @@ enum ButtonType: Hashable, CustomStringConvertible {
         }
     }
     
+    
     var backgroundColor: Color {
         switch self {
         case .allClear, .clear, .negative, .percent:
@@ -45,7 +46,7 @@ enum ButtonType: Hashable, CustomStringConvertible {
         case .operation, .equals:
             return SettingsView.ViewModel().selectedColor.color
         case .digit, .decimal:
-            return .secondary
+            return Color("buttonColor")
         }
     }
     
@@ -53,6 +54,8 @@ enum ButtonType: Hashable, CustomStringConvertible {
         switch self {
         case .allClear, .clear, .negative, .percent:
             return .black
+        case .digit, .decimal:
+            return Color("fontColor")
         default:
             return .white
         }

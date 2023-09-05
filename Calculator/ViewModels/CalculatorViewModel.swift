@@ -9,6 +9,7 @@ import Foundation
 import Combine
 
 extension CalculatorView {
+    
     final class ViewModel: ObservableObject {
         
         // MARK: - PROPERTIES

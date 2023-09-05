@@ -12,6 +12,8 @@ extension CalculatorView {
         
         let buttonType: ButtonType
         @EnvironmentObject var viewModel: ViewModel
+        @Environment(\.colorScheme) var colorScheme
+
         
         var body: some View {
             Button(buttonType.description) {
@@ -23,6 +25,12 @@ extension CalculatorView {
                     foregroundColor: getForegroundColor(),
                     isWide: buttonType == .digit(.zero))
                 )
+                .shadow(color: shadowColor, radius: 5, x: 0, y: 2)
+            
+        }
+        
+        private var shadowColor: Color{
+            return colorScheme == .dark ? .clear : .gray
         }
         
         private func getButtonSize() -> CGFloat {

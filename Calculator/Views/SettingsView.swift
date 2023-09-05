@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @EnvironmentObject var viewModel: SettingsView.ViewModel
+    @EnvironmentObject private var viewModel: SettingsView.ViewModel
 
     var body: some View {
         NavigationView {
@@ -16,14 +16,13 @@ struct SettingsView: View {
                 Section(header: Text("Accent Color")) {
                     circlesScrollablePicker
                         .padding(5)
-//                    Text("Stored Color: \(viewModel.storedSelectedColor.description)")
-                    darkMode
+//                  Text("Stored Color: \(viewModel.storedSelectedColor.description)")
+//                    darkMode
                         .padding(5)
                 }
             }
             .navigationTitle("Preferences")
         }
-        .preferredColorScheme(viewModel.isDarkModeEnabled ? .dark : .light)
     }
 }
 
@@ -53,8 +52,6 @@ extension SettingsView {
             }
         }
     }
-
-
     
     private var darkMode: some View {
         HStack {

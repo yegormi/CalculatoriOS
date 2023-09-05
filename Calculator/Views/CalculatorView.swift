@@ -14,9 +14,12 @@ struct CalculatorView: View {
     
     @EnvironmentObject private var viewModel: ViewModel
     @EnvironmentObject private var settingsViewModel: SettingsView.ViewModel
+    
     @State private var isShowingSettings = false
     @State private var isShowingHistory = false
     @State private var isReadyToUpdateView = false
+    
+    
 
 
     var body: some View {
@@ -33,22 +36,10 @@ struct CalculatorView: View {
             buttonPad
         }
         .padding(Constants.padding)
-        .background(Color.black)
-        .onChange(of: settingsViewModel.isDarkModeEnabled) { newValue in
-            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-               let window = windowScene.windows.first {
-                UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
-                    window.overrideUserInterfaceStyle = newValue ? .dark : .light
-                }, completion: nil)
-            }
-        }
-        .onAppear() {
-            settingsViewModel.selectedColor = settingsViewModel.storedSelectedColor
-        }
-        .onChange(of: settingsViewModel.selectedColor) { newValue in
-            settingsViewModel.setSelectedColor(to: newValue)
-            settingsViewModel.saveSelectedColor()
-        }
+        .background(Color(UIColor.systemBackground))
+//        .onChange(of: settingsViewModel.isDarkModeEnabled) { newValue in
+//            applyDarkModeTransition(newValue)
+//        }
         .onReceive(settingsViewModel.accentColorChanged) { _ in
             isReadyToUpdateView = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -77,7 +68,7 @@ extension CalculatorView {
     private var displayText: some View {
         Text(viewModel.displayText)
             .padding()
-            .foregroundColor(.white)
+            .foregroundColor(.primary)
             .frame(maxWidth: .infinity, alignment: .trailing)
             .font(.system(size: 88, weight: .light))
             .lineLimit(1)
@@ -100,14 +91,13 @@ extension CalculatorView {
 
     }
 
-    
     private var settingsButton: some View {
         Button(action: {
             isShowingSettings.toggle()
         }) {
             Image(systemName: "gearshape")
                 .font(.title)
-                .foregroundColor(.white)
+                .foregroundColor(.primary)
         }
         .sheet(isPresented: $isShowingSettings) {
             SettingsView()
@@ -120,7 +110,16 @@ extension CalculatorView {
         }) {
             Image(systemName: "clock.arrow.circlepath")
                 .font(.title)
-                .foregroundColor(.white)
+                .foregroundColor(.primary)
+        }
+    }
+    
+    private func applyDarkModeTransition(_ isDarkModeEnabled: Bool) {
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                window.overrideUserInterfaceStyle = isDarkModeEnabled ? .dark : .light
+            }, completion: nil)
         }
     }
 }

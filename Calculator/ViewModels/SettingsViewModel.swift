@@ -10,17 +10,18 @@ import Combine
 
 extension SettingsView {
     
+    
     final class ViewModel: ObservableObject {
-        @AppStorage("isDarkModeEnabled") var isDarkModeEnabled = false
         
         @Published var selectedColor: ColorPicker = .orange
+
+        @AppStorage("isDarkModeEnabled") var isDarkModeEnabled = false
         @AppStorage("selectedColor") var storedSelectedColor: ColorPicker = .orange
-        
+
         // Add an accent color change publisher
         let accentColorChanged = PassthroughSubject<Void, Never>()
         
         init() {
-            // Initialize selectedColor from AppStorage
             selectedColor = storedSelectedColor
         }
         

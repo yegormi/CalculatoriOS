@@ -14,7 +14,6 @@ struct CalculatorApp: App {
             CalculatorView()
                 .environmentObject(CalculatorView.ViewModel())
                 .environmentObject(SettingsView.ViewModel())
-
         }
     }
 }
