@@ -14,8 +14,6 @@ struct HistoryItem: Identifiable, Decodable, Encodable {
 }
 
 struct HistoryCardView: View {
-    @EnvironmentObject private var viewModel: CalculatorView.ViewModel
-    
     let historyItem: HistoryItem
     let cornerRadius: CGFloat = 16
     let cardHeight: CGFloat = 100
@@ -40,37 +38,46 @@ struct HistoryCardView: View {
 
 struct HistorySheetView: View {
     @EnvironmentObject private var viewModel: CalculatorView.ViewModel
-    
-    @State private var testHistoryItems: [HistoryItem] = [
-        HistoryItem(action: "(10 * 2) / 2 =", result: "10"),
-        HistoryItem(action: "10 * 2 =", result: "20"),
-        HistoryItem(action: "15 * 3 =", result: "45"),
-        HistoryItem(action: "8 * 4 =", result: "32"),
-        HistoryItem(action: "12 * 7 =", result: "84")
-    ]
-    
+
     var body: some View {
         NavigationView {
             VStack {
                 Text("History Item Count: \(viewModel.historyItems.count)")
-                List {
-                    ForEach(viewModel.historyItems.reversed()) { item in
-                        HistoryCardView(historyItem: item)
-                            .listRowSeparator(.hidden)
-                            .frame(maxWidth: .infinity)
-                            .padding(.horizontal)
-                    }
-                    .onDelete { indices in
-                        viewModel.historyItems.remove(atOffsets: indices)
-                        viewModel.saveHistoryItems()
-                    }
-                    .padding(.top)
-                }
-                .listStyle(PlainListStyle())
+                historyCardsList
             }
             .navigationBarTitle("History")
             .navigationBarItems(trailing: clearButton)
         }
+    }
+}
+
+extension HistorySheetView {
+    
+    private var clearButton: some View {
+        Button(action: {
+            viewModel.historyItems.removeAll()
+            viewModel.saveHistoryItems()
+        }) {
+            Text("Clear")
+                .foregroundColor(.red) // Customize the color as needed
+        }
+    }
+    
+    private var historyCardsList: some View {
+        List {
+            ForEach(viewModel.historyItems.reversed()) { item in
+                HistoryCardView(historyItem: item)
+                    .listRowSeparator(.hidden)
+                    .frame(maxWidth: .infinity)
+                    .padding(.horizontal)
+            }
+            .onDelete { indices in
+                viewModel.historyItems.remove(atOffsets: indices)
+                viewModel.saveHistoryItems()
+            }
+            .padding(.top)
+        }
+        .listStyle(PlainListStyle())
     }
 }
 
@@ -98,19 +105,6 @@ extension HistoryCardView {
         }
     }
 
-}
-
-extension HistorySheetView {
-    
-    private var clearButton: some View {
-        Button(action: {
-            viewModel.historyItems.removeAll()
-            viewModel.saveHistoryItems()
-        }) {
-            Text("Clear")
-                .foregroundColor(.red) // Customize the color as needed
-        }
-    }
 }
 
 struct HistorySheetView_Previews: PreviewProvider {
