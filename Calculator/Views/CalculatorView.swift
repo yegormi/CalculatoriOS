@@ -20,8 +20,7 @@ struct CalculatorView: View {
     @State private var isReadyToUpdateView = false
     
     
-
-
+    
     var body: some View {
         VStack {
             HStack {
@@ -37,9 +36,6 @@ struct CalculatorView: View {
         }
         .padding(Constants.padding)
         .background(Color(UIColor.systemBackground))
-//        .onChange(of: settingsViewModel.isDarkModeEnabled) { newValue in
-//            applyDarkModeTransition(newValue)
-//        }
         .onReceive(settingsViewModel.accentColorChanged) { _ in
             isReadyToUpdateView = true
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -70,7 +66,7 @@ extension CalculatorView {
             .padding()
             .foregroundColor(.primary)
             .frame(maxWidth: .infinity, alignment: .trailing)
-            .font(.system(size: 88, weight: .light))
+            .font(.system(size: 90, weight: .light))
             .lineLimit(1)
             .minimumScaleFactor(0.3)
     }
@@ -88,9 +84,9 @@ extension CalculatorView {
             }
         }
         .id(isReadyToUpdateView)
-
+        
     }
-
+    
     private var settingsButton: some View {
         Button(action: {
             isShowingSettings.toggle()
@@ -112,14 +108,8 @@ extension CalculatorView {
                 .font(.title)
                 .foregroundColor(.primary)
         }
-    }
-    
-    private func applyDarkModeTransition(_ isDarkModeEnabled: Bool) {
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = windowScene.windows.first {
-            UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
-                window.overrideUserInterfaceStyle = isDarkModeEnabled ? .dark : .light
-            }, completion: nil)
+        .sheet(isPresented: $isShowingHistory) {
+            HistorySheetView()
         }
     }
 }

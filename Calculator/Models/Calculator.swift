@@ -5,15 +5,14 @@
 //  Created by Yegor Myropoltsev on 28.08.2023.
 //
 
-import Foundation
-
+import SwiftUI
 
 struct Calculator {
-    
+
     private struct ArithmeticExpression: Equatable {
         var number: Decimal
         var operation: ArithmeticOperation
-
+        
         func evaluate(with secondNumber: Decimal) -> Decimal {
             switch operation {
             case .addition:
@@ -46,14 +45,19 @@ struct Calculator {
     private var carryingDecimal: Bool = false
     private var carryingZeroCount: Int = 0
     private var pressedClear: Bool = false
+    
+    private var currentExpression: String?
+    private var currentResult: String?
+    var evaluationPerformed: Bool = false
 
-
+    
+    
     // MARK: - COMPUTED PROPERTIES
     
     var displayText: String {
         return getNumberString(forNumber: number, withCommas: true)
     }
-
+    
     var number: Decimal? {
         if pressedClear || carryingDecimal {
             return newNumber
@@ -68,6 +72,20 @@ struct Calculator {
     /// Will be used by the ViewModel to know which button to show
     var showAllClear: Bool {
         newNumber == nil && expression == nil && result == nil || pressedClear
+    }
+    
+    var expressionText: String? {
+        if let expression = expression, let newNumber = newNumber {
+            return "\(expression.number) \(expression.operation.description) \(newNumber)"
+        }
+        return nil
+    }
+    
+    var resultText: String? {
+        if let result = result {
+            return "\(result)"
+        }
+        return nil
     }
     
     // MARK: - OPERATIONS
@@ -106,7 +124,7 @@ struct Calculator {
             result = -number
             return
         }
-
+        
         carryingNegative.toggle()
     }
     
@@ -141,7 +159,13 @@ struct Calculator {
         // 3.
         expression = nil
         newNumber = nil
+        // 4.
+        currentExpression = "\(expressionToEvaluate.number) \(expressionToEvaluate.operation.description) \(number)"
+        currentResult = "\(result!)"
+        // 5.
+        evaluationPerformed = true
     }
+
     
     mutating func allClear() {
         newNumber = nil
@@ -151,23 +175,34 @@ struct Calculator {
         carryingNegative = false
         carryingDecimal = false
         carryingZeroCount = 0
+        
+        currentExpression = nil
+        currentResult = nil
     }
     
     mutating func clear() {
-         newNumber = nil
+        newNumber = nil
         
-         carryingNegative = false
-         carryingDecimal = false
-         carryingZeroCount = 0
+        carryingNegative = false
+        carryingDecimal = false
+        carryingZeroCount = 0
         
-         pressedClear = true
-     }
+        pressedClear = true
+    }
     
     // MARK: - HELPERS
     
+    func getCurrentExpressionText() -> String? {
+        return currentExpression
+    }
+    
+    func getCurrentResultText() -> String? {
+        return currentResult
+    }
+    
     private func getNumberString(forNumber number: Decimal?, withCommas: Bool = false) -> String {
         var numberString = (withCommas ? number?.formatted(.number) : number.map(String.init)) ?? "0"
-
+        
         if carryingNegative {
             numberString.insert("-", at: numberString.startIndex)
         }
@@ -179,15 +214,16 @@ struct Calculator {
         if carryingZeroCount > 0 {
             numberString.append(String(repeating: "0", count: carryingZeroCount))
         }
-
+        
         return numberString
     }
-
+    
+    
     private func canAddDigit(_ digit: Digit) -> Bool {
         return number != nil || digit != .zero
     }
     
     func operationIsHighlighted(_ operation: ArithmeticOperation) -> Bool {
-          return expression?.operation == operation && newNumber == nil
-      }
+        return expression?.operation == operation && newNumber == nil
+    }
 }
