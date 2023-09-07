@@ -11,16 +11,11 @@ import SwiftUI
 struct ColorCircle: View {
     let colorSelected: ColorPicker
     let isSelected: Bool
-
-
-    var circleSize: CGFloat {
-        return 20
-    }
     
+    let circleSize: CGFloat = 20
     var innerSize: CGFloat {
         return buttonSize / 2
     }
-    
     var buttonSize: CGFloat {
         return getButtonSize()
     }
