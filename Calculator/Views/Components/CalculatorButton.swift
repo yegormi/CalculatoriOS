@@ -13,19 +13,19 @@ extension CalculatorView {
         let buttonType: ButtonType
         @EnvironmentObject var viewModel: ViewModel
         @Environment(\.colorScheme) var colorScheme
-
+        
         
         var body: some View {
             Button(buttonType.description) {
                 viewModel.performAction(for: buttonType)
             }
-                .buttonStyle(CalculatorButtonStyle(
-                    size: getButtonSize(),
-                    backgroundColor: getBackgroundColor(),
-                    foregroundColor: getForegroundColor(),
-                    isWide: buttonType == .digit(.zero))
-                )
-                .shadow(color: shadowColor, radius: 5, x: 0, y: 2)
+            .buttonStyle(CalculatorButtonStyle(
+                size: getButtonSize(),
+                backgroundColor: getBackgroundColor(),
+                foregroundColor: getForegroundColor(),
+                isWide: buttonType == .digit(.zero))
+            )
+            .shadow(color: shadowColor, radius: 4, x: 0, y: 0)
             
         }
         
@@ -44,7 +44,7 @@ extension CalculatorView {
         private func getBackgroundColor() -> Color {
             return viewModel.buttonTypeIsHighlighted(buttonType: buttonType) ? buttonType.foregroundColor : buttonType.backgroundColor
         }
-
+        
         private func getForegroundColor() -> Color {
             return viewModel.buttonTypeIsHighlighted(buttonType: buttonType) ? buttonType.backgroundColor : buttonType.foregroundColor
         }

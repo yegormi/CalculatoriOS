@@ -23,6 +23,8 @@
 		EEB8E8CE2AA3D3DA00E69811 /* ColorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8E8C92AA3D3D900E69811 /* ColorData.swift */; };
 		EEB8E8D22AA3D59000E69811 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8E8D12AA3D59000E69811 /* SettingsView.swift */; };
 		EEB8E8D42AA3D59C00E69811 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8E8D32AA3D59C00E69811 /* SettingsViewModel.swift */; };
+		EED2B6492AA73F5700CF00BA /* HistorySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED2B6482AA73F5700CF00BA /* HistorySheetView.swift */; };
+		EED2B64D2AA79D2000CF00BA /* RoundedCornersStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED2B64C2AA79D2000CF00BA /* RoundedCornersStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		EEB8E8D12AA3D59000E69811 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EEB8E8D32AA3D59C00E69811 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		EEB8E8F12AA4B79900E69811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EED2B6482AA73F5700CF00BA /* HistorySheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySheetView.swift; sourceTree = "<group>"; };
+		EED2B64C2AA79D2000CF00BA /* RoundedCornersStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornersStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +118,7 @@
 			children = (
 				EEA6E9E02A9CC86000A2F6DD /* CalculatorButtonStyle.swift */,
 				EEB8E8C72AA3D3D900E69811 /* ColorCircleStyle.swift */,
+				EED2B64C2AA79D2000CF00BA /* RoundedCornersStyle.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 				EEA6E9E22A9CC86000A2F6DD /* Components */,
 				EEA6E9E42A9CC86000A2F6DD /* CalculatorView.swift */,
 				EEB8E8D12AA3D59000E69811 /* SettingsView.swift */,
+				EED2B6482AA73F5700CF00BA /* HistorySheetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -217,11 +223,13 @@
 			files = (
 				EEA6E9CE2A9CC7DB00A2F6DD /* CalculatorApp.swift in Sources */,
 				EEB8E8CE2AA3D3DA00E69811 /* ColorData.swift in Sources */,
+				EED2B64D2AA79D2000CF00BA /* RoundedCornersStyle.swift in Sources */,
 				EEA6E9EA2A9CC86000A2F6DD /* CalculatorView.swift in Sources */,
 				EEA6E9E92A9CC86000A2F6DD /* CalculatorButton.swift in Sources */,
 				EEA6E9E62A9CC86000A2F6DD /* ButtonType.swift in Sources */,
 				EEA6E9F02A9CDE9000A2F6DD /* CalculatorViewModel.swift in Sources */,
 				EEA6E9E52A9CC86000A2F6DD /* ArithmeticOperation.swift in Sources */,
+				EED2B6492AA73F5700CF00BA /* HistorySheetView.swift in Sources */,
 				EEB8E8D42AA3D59C00E69811 /* SettingsViewModel.swift in Sources */,
 				EEB8E8CC2AA3D3DA00E69811 /* ColorCircleStyle.swift in Sources */,
 				EEB8E8D22AA3D59000E69811 /* SettingsView.swift in Sources */,

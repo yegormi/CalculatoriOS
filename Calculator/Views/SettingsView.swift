@@ -9,15 +9,15 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject private var viewModel: SettingsView.ViewModel
-
+    
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("Accent Color")) {
                     circlesScrollablePicker
                         .padding(5)
-//                  Text("Stored Color: \(viewModel.storedSelectedColor.description)")
-//                    darkMode
+                    //                  Text("Stored Color: \(viewModel.storedSelectedColor.description)")
+                    //                    darkMode
                         .padding(5)
                 }
             }
@@ -29,8 +29,8 @@ struct SettingsView: View {
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()
-            .environmentObject(CalculatorView.ViewModel())
             .environmentObject(SettingsView.ViewModel())
+            .environmentObject(CalculatorView.ViewModel())
     }
 }
 
@@ -58,7 +58,7 @@ extension SettingsView {
             Image(systemName: "moon")
             Toggle("Dark Mode", isOn: $viewModel.isDarkModeEnabled)
         }
-
+        
     }
     
 }

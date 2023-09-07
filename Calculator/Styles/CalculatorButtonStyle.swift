@@ -13,21 +13,22 @@ struct CalculatorButtonStyle: ButtonStyle {
     var backgroundColor: Color
     var foregroundColor: Color
     var isWide: Bool = false
-
+    
     
     func makeBody(configuration: Configuration) -> some View {
-            configuration.label
+        configuration.label
             .font(.system(size: 35, weight: .regular))
-                .frame(width: size, height: size)
-                .frame(maxWidth: isWide ? .infinity : size, alignment: .leading)
-                .background(backgroundColor)
-                .foregroundColor(foregroundColor)
-                .overlay {
-                    if configuration.isPressed {
-                        Color(white: 1.0, opacity: 0.2)
-                    }
+            .frame(width: size, height: size)
+            .frame(maxWidth: isWide ? .infinity : size, alignment: .leading)
+            .background(backgroundColor)
+            .foregroundColor(foregroundColor)
+            .overlay {
+                if configuration.isPressed {
+                    //                        Color(white: 1.0, opacity: 0.2)
+                    Color("highlightColor").opacity(0.2)
                 }
-                .clipShape(Capsule())
+            }
+            .clipShape(Capsule())
     }
 }
 

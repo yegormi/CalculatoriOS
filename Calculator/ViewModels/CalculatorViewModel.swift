@@ -5,8 +5,7 @@
 //  Created by Yegor Myropoltsev on 28.08.2023.
 //
 
-import Foundation
-import Combine
+import SwiftUI
 
 extension CalculatorView {
     
@@ -15,7 +14,10 @@ extension CalculatorView {
         // MARK: - PROPERTIES
         
         @Published private var calculator = Calculator()
+        @Published var historyItems: [HistoryItem] = []
         
+        private let historyItemsKey = "historyItems"
+
         var displayText: String {
             return calculator.displayText
         }
@@ -29,6 +31,13 @@ extension CalculatorView {
                 [.digit(.one), .digit(.two), .digit(.three), .operation(.addition)],
                 [.digit(.zero), .decimal, .equals]
             ]
+        }
+        
+        init() {
+            if let storedHistoryItemsData = UserDefaults.standard.data(forKey: historyItemsKey),
+               let loadedHistoryItems = try? JSONDecoder().decode([HistoryItem].self, from: storedHistoryItemsData) {
+                historyItems = loadedHistoryItems
+            }
         }
         
         // MARK: - ACTIONS
@@ -47,6 +56,7 @@ extension CalculatorView {
                 calculator.setDecimal()
             case .equals:
                 calculator.evaluate()
+                appendHistoryItem()
             case .allClear:
                 calculator.allClear()
             case .clear:
@@ -55,9 +65,46 @@ extension CalculatorView {
         }
         
         // MARK: - HELPERS
-       func buttonTypeIsHighlighted(buttonType: ButtonType) -> Bool {
-           guard case .operation(let operation) = buttonType else { return false }
-           return calculator.operationIsHighlighted(operation)
-       }
+        
+        func saveHistoryItems() {
+            if let encodedData = try? JSONEncoder().encode(historyItems) {
+                UserDefaults.standard.set(encodedData, forKey: historyItemsKey)
+            }
+        }
+        
+        func appendHistoryItem() {
+            guard calculator.evaluationPerformed else { return }
+            if let historyItem = createHistoryItem() {
+                historyItems.append(historyItem)
+                saveHistoryItems()
+            }
+            calculator.evaluationPerformed = false
+        }
+        
+        func getExpressionText() -> String? {
+            if let expression = calculator.expressionText {
+                return "\(expression)"
+            }
+            return nil
+        }
+        
+        func getResultText() -> String? {
+            if let result = calculator.resultText {
+                return "\(result)"
+            }
+            return nil
+        }
+        
+        func createHistoryItem() -> HistoryItem? {
+            guard let expression = calculator.getCurrentExpressionText(), let result = calculator.getCurrentResultText() else {
+                return nil
+            }
+            return HistoryItem(action: expression, result: result)
+        }
+        
+        func buttonTypeIsHighlighted(buttonType: ButtonType) -> Bool {
+            guard case .operation(let operation) = buttonType else { return false }
+            return calculator.operationIsHighlighted(operation)
+        }
     }
 }

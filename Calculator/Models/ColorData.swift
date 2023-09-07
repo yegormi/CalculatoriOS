@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-   
+
 enum ColorPicker: String, CaseIterable {
     case red
     case orange
