@@ -66,6 +66,10 @@ extension CalculatorView {
         
         // MARK: - HELPERS
         
+        func deleteHistoryItems(at offsets: IndexSet) {
+            historyItems.remove(atOffsets: offsets)
+        }
+        
         func saveHistoryItems() {
             if let encodedData = try? JSONEncoder().encode(historyItems) {
                 UserDefaults.standard.set(encodedData, forKey: historyItemsKey)
@@ -73,12 +77,12 @@ extension CalculatorView {
         }
         
         func appendHistoryItem() {
-            guard calculator.evaluationPerformed else { return }
+            guard calculator.isEvaluationPerformed() else { return }
             if let historyItem = createHistoryItem() {
-                historyItems.append(historyItem)
+                historyItems.insert(historyItem, at: 0)
                 saveHistoryItems()
             }
-            calculator.evaluationPerformed = false
+            calculator.setEvaluated(to: false)
         }
         
         func getExpressionText() -> String? {
