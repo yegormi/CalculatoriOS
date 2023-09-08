@@ -44,10 +44,9 @@ extension SettingsView {
                         .onTapGesture {
                             withAnimation() {
                                 viewModel.setSelectedColor(to: colorOption)
+                                viewModel.saveSelectedColor()
                             }
-                            viewModel.saveSelectedColor()
                         }
-                    
                 }
             }
         }
