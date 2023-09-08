@@ -7,43 +7,22 @@
 
 import SwiftUI
 
-struct HistoryItem: Identifiable, Decodable, Encodable {
-    var id = UUID()
-    let action: String
-    let result: String
-}
-
-struct HistoryCardView: View {
-    let historyItem: HistoryItem
-    let cornerRadius: CGFloat = 16
-    let cardHeight: CGFloat = 100
-    var boxHeight: CGFloat {
-        return cardHeight / 2.5
+struct HistoryView: View {
+    @EnvironmentObject private var viewModel: CalculatorView.ViewModel
+    @State private var isClearAlertPresented = false
+    
+    var itemsCount: Int {
+        viewModel.historyItems.count
     }
     
     var body: some View {
-        RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
-            .fill(Color("buttonColor"))
-            .frame(maxWidth: .infinity, minHeight: cardHeight)
-            .shadow(color: Color.gray, radius: 1)
-            .overlay(
-                VStack {
-                    expressionInRectangle
-                    resultInCard
-                }
-            )
-            .padding(.horizontal)
-    }
-}
-
-struct HistorySheetView: View {
-    @EnvironmentObject private var viewModel: CalculatorView.ViewModel
-
-    var body: some View {
         NavigationView {
             VStack {
-                Text("History Item Count: \(viewModel.historyItems.count)")
-                historyCardsList
+                if itemsCount == 0 {
+                    emptyText
+                } else {
+                    historyCardsList
+                }
             }
             .navigationBarTitle("History")
             .navigationBarItems(trailing: clearButton)
@@ -51,28 +30,49 @@ struct HistorySheetView: View {
     }
 }
 
-extension HistorySheetView {
+extension HistoryView {
+    
+    private var emptyText: some View {
+        Text("Empty")
+            .foregroundColor(Color("highlightColor"))
+            .font(.system(size: 36, weight: .ultraLight))
+            .transition(.opacity)
+            .padding(.bottom, 50)
+    }
     
     private var clearButton: some View {
         Button(action: {
-            viewModel.historyItems.removeAll()
-            viewModel.saveHistoryItems()
+            isClearAlertPresented.toggle()
         }) {
             Text("Clear")
-                .foregroundColor(.red) // Customize the color as needed
+                .foregroundColor(.red)
+        }
+        .alert(isPresented: $isClearAlertPresented) {
+            Alert(
+                title: Text("Clear History"),
+                message: Text("Do you want to clear all items?"),
+                primaryButton: .destructive(Text("Clear")) {
+                    withAnimation(.easeOut(duration: 0.25)) {
+                        viewModel.historyItems.removeAll()
+                        viewModel.saveHistoryItems()
+                    }
+
+                },
+                secondaryButton: .cancel()
+            )
         }
     }
     
     private var historyCardsList: some View {
         List {
-            ForEach(viewModel.historyItems.reversed()) { item in
-                HistoryCardView(historyItem: item)
+            ForEach(viewModel.historyItems) { item in
+                HistoryCardStyle(historyItem: item)
                     .listRowSeparator(.hidden)
                     .frame(maxWidth: .infinity)
                     .padding(.horizontal)
             }
-            .onDelete { indices in
-                viewModel.historyItems.remove(atOffsets: indices)
+            .onDelete { index in
+                viewModel.deleteHistoryItems(at: index)
                 viewModel.saveHistoryItems()
             }
             .padding(.top)
@@ -81,35 +81,9 @@ extension HistorySheetView {
     }
 }
 
-extension HistoryCardView {
-    
-    private var expressionInRectangle: some View {
-        Rectangle()
-            .fill(Color("cardHeadlineColor"))
-            .frame(maxWidth: .infinity, maxHeight: boxHeight)
-            .overlay(
-                Text(historyItem.action)
-                    .font(.headline)
-                    .foregroundColor(.primary)
-            )
-            .cornerRadius(cornerRadius, corners: [.topLeft, .topRight])
-    }
-    
-    private var resultInCard: some View {
-        VStack {
-            Spacer()
-            Text(historyItem.result)
-                .font(.title)
-                .foregroundColor(.primary)
-            Spacer()
-        }
-    }
-
-}
-
-struct HistorySheetView_Previews: PreviewProvider {
+struct HistoryView_Previews: PreviewProvider {
     static var previews: some View {
-        HistorySheetView()
+        HistoryView()
             .environmentObject(CalculatorView.ViewModel())
     }
 }
