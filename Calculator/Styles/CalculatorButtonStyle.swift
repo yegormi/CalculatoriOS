@@ -12,8 +12,9 @@ struct CalculatorButtonStyle: ButtonStyle {
     var size: CGFloat
     var backgroundColor: Color
     var foregroundColor: Color
-    var isWide: Bool = false
     
+    
+    var isWide: Bool = false
     
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -24,7 +25,6 @@ struct CalculatorButtonStyle: ButtonStyle {
             .foregroundColor(foregroundColor)
             .overlay {
                 if configuration.isPressed {
-                    //                        Color(white: 1.0, opacity: 0.2)
                     Color("highlightColor").opacity(0.2)
                 }
             }
