@@ -48,10 +48,10 @@ struct Calculator {
     
     private var currentExpression: String?
     private var currentResult: String?
-    var evaluationPerformed: Bool = false
+    private var evaluationPerformed: Bool = false
+    private var selectedOperation: ArithmeticOperation?
 
-    
-    
+
     // MARK: - COMPUTED PROPERTIES
     
     var displayText: String {
@@ -88,6 +88,7 @@ struct Calculator {
         return nil
     }
     
+    
     // MARK: - OPERATIONS
     
     mutating func setDigit(_ digit: Digit) {
@@ -95,23 +96,20 @@ struct Calculator {
             carryingZeroCount += 1
         } else if canAddDigit(digit) {
             let numberString = getNumberString(forNumber: newNumber)
-            if numberString.count >= 9 {
-                return
-            }
+            
+            if numberString.count >= 9 { return }
+            
             newNumber = Decimal(string: numberString.appending("\(digit.rawValue)"))
         }
     }
     
     mutating func setOperation(_ operation: ArithmeticOperation) {
-        // 1.
         guard var number = newNumber ?? result else { return }
-        // 2.
         if let existingExpression = expression {
             number = existingExpression.evaluate(with: number)
         }
-        // 3.
+        
         expression = ArithmeticExpression(number: number, operation: operation)
-        // 4.
         newNumber = nil
     }
     
@@ -129,40 +127,31 @@ struct Calculator {
     }
     
     mutating func setPercent() {
-        // 1.
         if let number = newNumber {
-            // 2.
             newNumber = number / 100
             return
         }
         
-        // 1.
         if let number = result {
-            // 2.
             result = number / 100
             return
         }
     }
     
     mutating func setDecimal() {
-        // 1.
         if containsDecimal { return }
-        // 2.
         carryingDecimal = true
     }
     
     mutating func evaluate() {
-        // 1.
         guard let number = newNumber, let expressionToEvaluate = expression else { return }
-        // 2.
         result = expressionToEvaluate.evaluate(with: number)
-        // 3.
+        
         expression = nil
         newNumber = nil
-        // 4.
+        
         currentExpression = "\(expressionToEvaluate.number) \(expressionToEvaluate.operation.description) \(number)"
         currentResult = "\(result!)"
-        // 5.
         evaluationPerformed = true
     }
 
@@ -191,6 +180,14 @@ struct Calculator {
     }
     
     // MARK: - HELPERS
+    
+    func isEvaluationPerformed() -> Bool {
+        return evaluationPerformed
+    }
+    
+    mutating func setEvaluated(to option: Bool) {
+        evaluationPerformed = option
+    }
     
     func getCurrentExpressionText() -> String? {
         return currentExpression
