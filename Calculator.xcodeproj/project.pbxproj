@@ -21,8 +21,10 @@
 		EEA6E9F02A9CDE9000A2F6DD /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA6E9EF2A9CDE9000A2F6DD /* CalculatorViewModel.swift */; };
 		EEB8E8CC2AA3D3DA00E69811 /* ColorCircleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8E8C72AA3D3D900E69811 /* ColorCircleStyle.swift */; };
 		EEB8E8CE2AA3D3DA00E69811 /* ColorData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8E8C92AA3D3D900E69811 /* ColorData.swift */; };
-		EEB8E8D22AA3D59000E69811 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8E8D12AA3D59000E69811 /* SettingsView.swift */; };
+		EEB8E8D22AA3D59000E69811 /* SettingsSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8E8D12AA3D59000E69811 /* SettingsSheetView.swift */; };
 		EEB8E8D42AA3D59C00E69811 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB8E8D32AA3D59C00E69811 /* SettingsViewModel.swift */; };
+		EEC415EF2AA9EAF500D905A2 /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC415EE2AA9EAF500D905A2 /* HistoryItem.swift */; };
+		EEC415F12AA9ED6500D905A2 /* HistoryCardStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC415F02AA9ED6500D905A2 /* HistoryCardStyle.swift */; };
 		EED2B6492AA73F5700CF00BA /* HistorySheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED2B6482AA73F5700CF00BA /* HistorySheetView.swift */; };
 		EED2B64D2AA79D2000CF00BA /* RoundedCornersStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED2B64C2AA79D2000CF00BA /* RoundedCornersStyle.swift */; };
 /* End PBXBuildFile section */
@@ -43,9 +45,11 @@
 		EEA6E9EF2A9CDE9000A2F6DD /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
 		EEB8E8C72AA3D3D900E69811 /* ColorCircleStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorCircleStyle.swift; sourceTree = "<group>"; };
 		EEB8E8C92AA3D3D900E69811 /* ColorData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorData.swift; sourceTree = "<group>"; };
-		EEB8E8D12AA3D59000E69811 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		EEB8E8D12AA3D59000E69811 /* SettingsSheetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsSheetView.swift; sourceTree = "<group>"; };
 		EEB8E8D32AA3D59C00E69811 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		EEB8E8F12AA4B79900E69811 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		EEC415EE2AA9EAF500D905A2 /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
+		EEC415F02AA9ED6500D905A2 /* HistoryCardStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCardStyle.swift; sourceTree = "<group>"; };
 		EED2B6482AA73F5700CF00BA /* HistorySheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySheetView.swift; sourceTree = "<group>"; };
 		EED2B64C2AA79D2000CF00BA /* RoundedCornersStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornersStyle.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,6 +113,7 @@
 				EEA6E9ED2A9CD75700A2F6DD /* Calculator.swift */,
 				EEB8E8C92AA3D3D900E69811 /* ColorData.swift */,
 				EEA6E9DE2A9CC85F00A2F6DD /* Digit.swift */,
+				EEC415EE2AA9EAF500D905A2 /* HistoryItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 			children = (
 				EEA6E9E02A9CC86000A2F6DD /* CalculatorButtonStyle.swift */,
 				EEB8E8C72AA3D3D900E69811 /* ColorCircleStyle.swift */,
+				EEC415F02AA9ED6500D905A2 /* HistoryCardStyle.swift */,
 				EED2B64C2AA79D2000CF00BA /* RoundedCornersStyle.swift */,
 			);
 			path = Styles;
@@ -128,8 +134,8 @@
 			children = (
 				EEA6E9E22A9CC86000A2F6DD /* Components */,
 				EEA6E9E42A9CC86000A2F6DD /* CalculatorView.swift */,
-				EEB8E8D12AA3D59000E69811 /* SettingsView.swift */,
 				EED2B6482AA73F5700CF00BA /* HistorySheetView.swift */,
+				EEB8E8D12AA3D59000E69811 /* SettingsSheetView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -232,7 +238,9 @@
 				EED2B6492AA73F5700CF00BA /* HistorySheetView.swift in Sources */,
 				EEB8E8D42AA3D59C00E69811 /* SettingsViewModel.swift in Sources */,
 				EEB8E8CC2AA3D3DA00E69811 /* ColorCircleStyle.swift in Sources */,
-				EEB8E8D22AA3D59000E69811 /* SettingsView.swift in Sources */,
+				EEC415F12AA9ED6500D905A2 /* HistoryCardStyle.swift in Sources */,
+				EEB8E8D22AA3D59000E69811 /* SettingsSheetView.swift in Sources */,
+				EEC415EF2AA9EAF500D905A2 /* HistoryItem.swift in Sources */,
 				EEA6E9EE2A9CD75700A2F6DD /* Calculator.swift in Sources */,
 				EEA6E9E82A9CC86000A2F6DD /* CalculatorButtonStyle.swift in Sources */,
 				EEA6E9E72A9CC86000A2F6DD /* Digit.swift in Sources */,

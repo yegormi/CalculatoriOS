@@ -109,7 +109,7 @@ extension CalculatorView {
                 .foregroundColor(.primary)
         }
         .sheet(isPresented: $isShowingHistory) {
-            HistorySheetView()
+            HistoryView()
         }
     }
 }
