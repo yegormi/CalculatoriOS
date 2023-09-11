@@ -29,6 +29,7 @@ struct CalculatorButtonStyle: ButtonStyle {
                 }
             }
             .clipShape(Capsule())
+            .animation(.easeOut(duration: 0.3), value: backgroundColor)
     }
 }
 

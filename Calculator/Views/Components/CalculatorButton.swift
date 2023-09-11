@@ -9,11 +9,10 @@ import SwiftUI
 
 extension CalculatorView {
     struct CalculatorButton: View {
-        
         let buttonType: ButtonType
+        
         @EnvironmentObject var viewModel: ViewModel
         @Environment(\.colorScheme) var colorScheme
-        
         
         var body: some View {
             Button(buttonType.description) {
@@ -26,7 +25,6 @@ extension CalculatorView {
                 isWide: buttonType == .digit(.zero))
             )
             .shadow(color: shadowColor, radius: 4, x: 0, y: 0)
-            
         }
         
         private var shadowColor: Color{
