@@ -31,9 +31,9 @@ extension CalculatorView {
             return colorScheme == .dark ? .clear : .gray
         }
         
-        private func getButtonSize() -> CGFloat {
+        private func getButtonSize() -> Double {
             let screenWidth = UIScreen.main.bounds.width
-            let buttonCount: CGFloat = 4.0
+            let buttonCount = 4.0
             let spacingCount = buttonCount + 1
             return (screenWidth - (spacingCount * Constants.padding)) / buttonCount
         }

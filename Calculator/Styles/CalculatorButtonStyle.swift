@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CalculatorButtonStyle: ButtonStyle {
     
-    var size: CGFloat
+    var size: Double
     var backgroundColor: Color
     var foregroundColor: Color
     

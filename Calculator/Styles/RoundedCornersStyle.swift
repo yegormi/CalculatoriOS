@@ -8,14 +8,14 @@
 import SwiftUI
 
 extension View {
-    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+    func cornerRadius(_ radius: Double, corners: UIRectCorner) -> some View {
         clipShape( RoundedCorner(radius: radius, corners: corners) )
     }
 }
 
 struct RoundedCorner: Shape {
     
-    var radius: CGFloat = .infinity
+    var radius: Double = .infinity
     var corners: UIRectCorner = .allCorners
     
     func path(in rect: CGRect) -> Path {
