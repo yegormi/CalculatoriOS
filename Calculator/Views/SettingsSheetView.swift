@@ -37,8 +37,7 @@ extension SettingsView {
             LazyHStack(spacing: 15) {
                 ForEach(ColorPicker.allCases, id: \.self) { colorOption in
                     let isSelected = colorOption.color == viewModel.selectedColor.color
-                    
-                    let labelColor = colorOption.color.description.capitalized
+                    let labelColor = colorOption.color.description
                     let labelText = isSelected ? "\(labelColor)" : ""
                     
                     ColorCircle(colorSelected: colorOption,
@@ -54,14 +53,6 @@ extension SettingsView {
                 .padding(.bottom, 25)
             }
         }
-    }
-    
-    private var darkMode: some View {
-        HStack {
-            Image(systemName: "moon")
-            Toggle("Dark Mode", isOn: $viewModel.isDarkModeEnabled)
-        }
-        
     }
     
 }
