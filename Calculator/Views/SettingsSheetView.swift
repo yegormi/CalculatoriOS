@@ -37,7 +37,7 @@ extension SettingsView {
             LazyHStack(spacing: 15) {
                 ForEach(ColorPicker.allCases, id: \.self) { colorOption in
                     let isSelected = colorOption.color == viewModel.selectedColor.color
-                    let labelColor = colorOption.color.description
+                    let labelColor = colorOption.description
                     let labelText = isSelected ? "\(labelColor)" : ""
                     
                     ColorCircle(colorSelected: colorOption,
