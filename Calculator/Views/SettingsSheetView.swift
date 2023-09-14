@@ -46,11 +46,11 @@ extension SettingsView {
                     .onTapGesture {
                         withAnimation(.easeOut(duration: Constants.animationDuration)) {
                             viewModel.setSelectedColor(to: colorOption)
-                            viewModel.saveSelectedColor()
                         }
+                        viewModel.saveSelectedColor()
                     }
                 }
-                .padding(.bottom, 25)
+                .padding(.bottom, 30)
             }
         }
     }

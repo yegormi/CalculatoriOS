@@ -40,7 +40,7 @@ struct ColorCircle: View {
                 .minimumScaleFactor(0.5)
                 .offset(y: circleSize * 2)
         }
-        .frame(minWidth: buttonSize + Constants.spacing / 1.5)
+        .frame(minWidth: buttonSize + Constants.spacing / 1.3)
     }
     
     private func getButtonSize() -> Double {
