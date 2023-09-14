@@ -9,4 +9,6 @@ import SwiftUI
 
 struct Constants {
     static let padding = 12.0
+    static let spacing = 15.0
+    static let animationDuration = 0.3
 }

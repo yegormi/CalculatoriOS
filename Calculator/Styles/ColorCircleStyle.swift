@@ -35,12 +35,12 @@ struct ColorCircle: View {
                 )
             Text(labelText)
                 .font(.system(size: 15, weight: .regular))
-                .lineLimit(1)
                 .foregroundColor(Color.gray)
-//                .frame(width: buttonSize)
+                .lineLimit(1)
                 .minimumScaleFactor(0.5)
                 .offset(y: circleSize * 2)
         }
+        .frame(minWidth: buttonSize + Constants.spacing / 1.5)
     }
     
     private func getButtonSize() -> Double {
@@ -53,7 +53,7 @@ struct ColorCircle: View {
 
 struct ColorCircle_Previews: PreviewProvider {
     static var previews: some View {
-        LazyHStack(spacing: 20) {
+        LazyHStack(spacing: 15) {
             Group {
                 ColorCircle(colorSelected: .red, isSelected: false, labelText: "Red")
                     .previewLayout(.sizeThatFits)

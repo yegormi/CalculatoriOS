@@ -34,7 +34,7 @@ extension SettingsView {
     
     private var circlesScrollablePicker: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            LazyHStack(spacing: 15) {
+            LazyHStack(spacing: 4) {
                 ForEach(ColorPicker.allCases, id: \.self) { colorOption in
                     let isSelected = colorOption.color == viewModel.selectedColor.color
                     let labelColor = colorOption.description
@@ -44,7 +44,7 @@ extension SettingsView {
                                 isSelected: isSelected,
                                 labelText: labelText)
                     .onTapGesture {
-                        withAnimation(.easeOut(duration: 0.3)) {
+                        withAnimation(.easeOut(duration: Constants.animationDuration)) {
                             viewModel.setSelectedColor(to: colorOption)
                             viewModel.saveSelectedColor()
                         }
