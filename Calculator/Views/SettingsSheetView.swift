@@ -34,18 +34,17 @@ extension SettingsView {
     
     private var circlesScrollablePicker: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            LazyHStack(spacing: 15) {
+            LazyHStack(spacing: 4) {
                 ForEach(ColorPicker.allCases, id: \.self) { colorOption in
                     let isSelected = colorOption.color == viewModel.selectedColor.color
-                    
-                    let labelColor = colorOption.color.description.capitalized
+                    let labelColor = colorOption.description
                     let labelText = isSelected ? "\(labelColor)" : ""
                     
                     ColorCircle(colorSelected: colorOption,
                                 isSelected: isSelected,
                                 labelText: labelText)
                     .onTapGesture {
-                        withAnimation(.easeOut(duration: 0.3)) {
+                        withAnimation(.easeOut(duration: Constants.animationDuration)) {
                             viewModel.setSelectedColor(to: colorOption)
                             viewModel.saveSelectedColor()
                         }
@@ -54,14 +53,6 @@ extension SettingsView {
                 .padding(.bottom, 25)
             }
         }
-    }
-    
-    private var darkMode: some View {
-        HStack {
-            Image(systemName: "moon")
-            Toggle("Dark Mode", isOn: $viewModel.isDarkModeEnabled)
-        }
-        
     }
     
 }
