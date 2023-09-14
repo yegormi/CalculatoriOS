@@ -11,7 +11,7 @@ struct HistoryView: View {
     @EnvironmentObject private var viewModel: CalculatorView.ViewModel
     @State private var isClearAlertPresented = false
     
-    var itemsCount: Int {
+    private var itemsCount: Int {
         viewModel.historyItems.count
     }
     
@@ -26,6 +26,7 @@ struct HistoryView: View {
             }
             .navigationBarTitle("History")
             .navigationBarItems(trailing: clearButton)
+            .frame(maxWidth: .infinity)
         }
     }
 }

@@ -10,13 +10,12 @@ import SwiftUI
 struct HistoryCardStyle: View {
     let historyItem: HistoryItem
     
-    let cornerRadius: CGFloat = 16
-    let cardHeight: CGFloat = 100
     
-    var boxHeight: CGFloat {
+    let cornerRadius = 16.0
+    let cardHeight = 100.0
+    var boxHeight: Double {
         cardHeight / 2.5
     }
-    
     
     var body: some View {
         RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
