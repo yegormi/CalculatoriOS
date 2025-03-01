@@ -55,7 +55,7 @@ enum ButtonType: Hashable, CustomStringConvertible {
         case .allClear, .clear, .negative, .percent:
             return .black
         case .digit, .decimal:
-            return Color("fontColor")
+            return Color.primary
         default:
             return .white
         }
